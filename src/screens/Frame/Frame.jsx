@@ -11,8 +11,9 @@ const handleInputChange = (value) => {
 
 export const Frame = () => {
   return (
-    <div className="frame">
-      <div className="div">
+    <div className="frame">  
+    <div className="rectangle" alt="Rectangle" />
+       <div className="div">
         <div className="text-wrapper-2">Amazing Cooks</div>
         <Button
           className="services-button"
@@ -122,6 +123,42 @@ export const Frame = () => {
           <Button className="sign-In-button" label="Sign In" size="medium" variant="primary" />
           <div className="text-wrapper-4">Already have an account?</div>
         </div>
+      </div>  
+      <div className="div-4">
+         <div className="text-wrapper-5">Welcome to Amazing Cooks</div>
+         <p className="at-amazing-cooks-we">
+         At Amazing Cooks, we believe in the joy of home-cooked meals shared in the comfort of your own space. Whether you're a passionate cook looking to share your culinary skills or someone craving a delicious, personalized dining experience, our platform connects you with talented cooks who come directly to your home.
+         </p>
+         <div className="text-wrapper-6">How it works</div>
+         <p className="register-and">
+          <span className="span">Register and Showcase Your Talent: </span>
+          <span className="text-wrapper-7">&nbsp;</span>
+          <span className="text-wrapper-8">
+          Signing up is easy! If you love cooking and want to earn money doing what you enjoy, simply register as a cook on our platform. Create a compelling profile showcasing your specialties, experience, and availability.
+          </span>
+          <span>
+          <br />
+          <br />
+          Receive Booking Requests: {" "}
+          </span>
+          <span className="text-wrapper-8">
+          Customers will browse through cook profiles and send booking requests based on their preferences. You'll receive notifications whenever someone is interested in booking your services.
+          <br />
+          <br />
+          </span>
+          <span className="span">Prepare and Cook: </span>
+          <span className="text-wrapper-8">
+          Once you accept a booking, it's time to shine! Gather fresh ingredients, bring your tools, and head to the customer's home at the scheduled time. Create a delightful dining experience right in their kitchen.
+          <br />
+          <br />
+          </span>
+          <span className="span">Earn and Grow: </span>
+          <span className="text-wrapper-8">
+          Get paid for your culinary talents. The more bookings you fulfill, the more you earn. Receive ratings and reviews from customers to build your reputation and attract more bookings in the future.
+          <br />
+          <br />
+          </span>
+         </p>
       </div>
     </div>
   );

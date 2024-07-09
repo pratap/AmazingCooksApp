@@ -7,6 +7,15 @@
   width: 100%;
 }
 
+.frame .rectangle {
+  background-color: #06000059; 
+  height: 100%;
+  left: 0px;
+  position:absolute;
+  top: 0px;
+  width: 100%;
+}
+
 .frame .div {
   background-color: #00000080;
   height: 94px;
@@ -283,4 +292,83 @@
   position: absolute;
   top: 778px;
   width: 334px;
+} 
+
+.frame .div-4 {
+  left: 37px !important;
+  position: absolute !important;
+  top: 124px !important;
+  width: 571px !important;
+  height: 851px !important;
+
+}
+
+.frame .text-wrapper-5 {
+  color: #ffffff;
+  font-family: "Roboto-Medium", Helvetica;
+  font-size: 24px;
+  font-weight: 500;
+  height: 36px;
+  left: 34px;
+  letter-spacing: 0px;
+  line-height: 20px;
+  position: absolute;
+  top: 32px;
+  width: 306px;
+}
+
+.frame .at-amazing-cooks-we {
+  color: #ffffff;
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  left: 34px;
+  letter-spacing: 1px;
+  line-height: 20px;
+  position: absolute;
+  top: 87px;
+  width: 516px;
+}
+
+.frame .text-wrapper-6 {
+  color: #ffffff;
+  font-family: "Roboto-Medium", Helvetica;
+  font-size: 24px;
+  font-weight: 500;
+  left: 32px;
+  letter-spacing: 1px;
+  line-height: 20px;
+  position: absolute;
+  top: 258px;
+  white-space: nowrap;
+  width: 224px;
+}
+
+.frame .register-and {
+  color: #ffffff;
+  font-family: "Roboto-Medium", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  left: 36px;
+  letter-spacing: 1px;
+  line-height: 20px;
+  position: absolute;
+  top: 304px;
+  width: 493px;
+}
+
+.frame .span {
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.frame .text-wrapper-7 {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0.24px;
+}
+
+.frame .text-wrapper-7 {
+  font-family: "Roboto-Regular", Helvetica;
+  letter-spacing: 0.2px;
 }
