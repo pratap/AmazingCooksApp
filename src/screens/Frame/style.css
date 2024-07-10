@@ -1,18 +1,24 @@
-.frame {
-  background-image: url(../../../static/img/rectangle-1.png);
-  background-position: 50% 50%;
-  background-size: cover;
-  height: 1024px;
+/* .frame {
+ 
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
   position: relative;
   width: 100%;
 }
 
-.frame .rectangle {
-  background-color: #06000059; 
-  height: 100%;
-  left: 0px;
-  position:absolute;
-  top: 0px;
+.frame .main-content-frame {
+  
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 33px;
+  position: relative;
   width: 100%;
 }
 
@@ -371,4 +377,384 @@
 .frame .text-wrapper-7 {
   font-family: "Roboto-Regular", Helvetica;
   letter-spacing: 0.2px;
+} */
+
+.frame {
+ 
+  align-items: flex-start;
+  background-size: cover;
+  background-image: url(/static/img/rectangle-1.png);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 1024px;
+  position: relative;
+  width: 100%;
 }
+
+.frame .main-content-frame {
+ 
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 33px;
+  position: relative;
+  width: 100%;
+}
+
+.frame .navigation-frame {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100px;
+  position: relative;
+  width: 100%;
+}
+
+.frame .navigation-content {
+  align-items: center;
+  align-self: stretch;
+  background-color: #00000080;
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+  gap: 88px;
+  justify-content: space-around;
+  padding: 14px 21px;
+  position: relative;
+  width: 100%;
+}
+
+.frame .navigation-child {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+  justify-content: space-between;
+  position: relative;
+}
+
+.frame .text-wrapper-2 {
+  color: white;
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 48px;
+  font-weight: 500;
+  letter-spacing: -0.96px;
+  line-height: 57.6px;  
+  position: relative;
+  width: 347px;
+}
+
+.frame .navigation-buttons {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+  gap: 10px;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.frame .button-instance {
+  align-self: stretch !important;
+  background-color: unset !important;
+  border-color: transparent !important;
+  display: flex !important;
+  flex: 1 !important;
+  flex-grow: 1 !important;
+}
+
+.frame .design-component-instance-node {
+  color: white !important;
+  font-family: "Roboto-SemiBold", Helvetica !important;
+  font-size: 30px !important;
+  font-style: unset !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1px !important;
+  line-height: 20px !important;
+  margin-top: unset !important;
+  text-align: center !important;
+}
+
+.frame .menu-button-instance {
+  align-self: stretch !important;
+  flex: 1 !important;
+  flex-grow: 1 !important;
+}
+
+.frame .page-content-frame {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+  gap: 88px;
+  position: relative;
+  width: 95%;
+}
+
+.frame .page-child-content {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+  gap: 88px;
+  justify-content: center;
+  position: relative;
+}
+
+.frame .welcome-frame {
+  align-self: stretch;
+  flex: 1;
+  flex-grow: 1;
+  position: relative;
+}
+
+.frame .text-wrapper-3 {
+  color: white;
+  font-family: "Roboto-Medium", Helvetica;
+  font-size: 24px;
+  font-weight: 500;
+  height: 36px;
+  left: 34px;
+  letter-spacing: 0.1px;
+  line-height: 20px;  
+  position: absolute;
+  top: 32px;
+  width: 306px;
+}
+
+.frame .at-amazing-cooks-we {
+  color: #ffffff;
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  left: 34px;
+  letter-spacing: 1px;
+  line-height: 20px;
+  position: absolute;
+  top: 87px;
+  width: 516px;
+}
+
+.frame .text-wrapper-4 {
+  color: #ffffff;
+  font-family: "Roboto-Medium", Helvetica;
+  font-size: 24px;
+  font-weight: 500;
+  left: 32px;
+  letter-spacing: 1px;
+  line-height: 20px;
+  position: absolute;
+  top: 258px;
+  white-space: nowrap;
+  width: 224px;
+}
+
+.frame .register-and {
+  color: #ffffff;
+  font-family: "Roboto-Medium", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  left: 36px;
+  letter-spacing: 1px;
+  line-height: 20px;
+  position: absolute;
+  top: 304px;
+  width: 493px;
+}
+
+.frame .span {
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.frame .text-wrapper-5 {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0.24px;
+}
+
+.frame .text-wrapper-6 {
+  font-family: "Roboto-Regular", Helvetica;
+  letter-spacing: 0.2px;
+} 
+
+.frame .create-account-frame {
+  align-self: stretch;
+  flex: 1;
+  flex-grow: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+
+.frame .overlap-group {
+  background-color: #0a000061;
+  border-radius: 20px;
+  height: 867px;
+  left: 23px;
+  position: relative;
+  top: 1px;
+  width: 657px;
+}
+
+.frame .overlap {
+  height: 83px;
+  left: 76px;
+  position: absolute;
+  top: 5px;
+  width: 490px;
+}
+
+.frame .text-wrapper-7 {
+  color: #ffffff;
+  font-family: "Roboto", Helvetica;
+  font-size: 25px;
+  font-weight: 700;
+  height: 43px;
+  left: 67px;
+  letter-spacing: 0.1px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 5px;
+  width: 388px;
+}
+
+.frame .input-field-instance {
+  
+  display: flex !important;
+  height: 50px !important;
+  left: -20px !important;
+  position: absolute !important;
+  top: 33px !important;
+  width: 490px !important;
+}
+
+.frame .input-field-2 {
+  color: #fffcfc !important;
+}
+
+.frame .input-field-3 {
+  margin-bottom: -21px !important;
+}
+
+.frame .input-field-4 {
+  display: flex !important;
+  height: 50px !important;
+  left: 53px !important;
+  position: absolute !important;
+  top: 134px !important;
+  width: 490px !important;
+}
+
+.frame .input-field-5 {
+  display: flex !important;
+  height: 50px !important;
+  left: 60px !important;
+  position: absolute !important;
+  top: 230px !important;
+  width: 490px !important;
+}
+
+.frame .input-field-6 {
+  display: flex !important;
+  height: 50px !important;
+  left: 60px !important;
+  position: absolute !important;
+  top: 332px !important;
+  width: 490px !important;
+}
+
+.frame .input-field-7 {
+  display: flex !important;
+  height: 50px !important;
+  left: 60px !important;
+  position: absolute !important;
+  top: 421px !important;
+  width: 490px !important;
+}
+
+.frame .input-field-8 {
+  display: flex !important;
+  height: 50px !important;
+  left: 60px !important;
+  position: absolute !important;
+  top: 517px !important;
+  width: 490px !important;
+}
+
+.frame .input-field-9 {
+  display: flex !important;
+  height: 50px !important;
+  left: 60px !important;
+  position: absolute !important;
+  top: 606px !important;
+  width: 490px !important;
+}
+
+.frame .input-field-10 {
+  display: flex !important;
+  height: 54px !important;
+  left: 53px !important;
+  position: absolute !important;
+  top: 695px !important;
+  width: 308px !important;
+}
+
+.frame .input-field-11 {
+  margin-bottom: -17px !important;
+}
+
+.frame .sign-up-button {
+  color: #ffffff;
+  display: flex;
+  height: 40px !important;
+  left: 60px !important;
+  position: absolute !important;
+  top: 805px !important;
+  width: 189px !important;
+}
+
+.frame .upload-photo-button {
+  color: #ffffff;
+  display: flex;
+  height: 40px !important;
+  left: 399px !important;
+  position: absolute !important;
+  top: 725px !important;
+  width: 183px !important;
+}
+
+.frame .sign-In-button {
+  color: #ffffff;
+  display: flex;
+  height: 40px !important;
+  left: 323px !important;
+  position: absolute !important;
+  top: 805px !important;
+  width: 211px !important;
+}
+
+.frame .text-wrapper-8 {
+  color: #ffffff;
+  font-family: var(--single-line-body-base-font-family);
+  font-size: var(--single-line-body-base-font-size);
+  font-style: var(--single-line-body-base-font-style);
+  font-weight: var(--single-line-body-base-font-weight);
+  left: 258px;
+  letter-spacing: var(--single-line-body-base-letter-spacing);
+  line-height: var(--single-line-body-base-line-height);
+  position: absolute;
+  top: 778px;
+  width: 334px;
+} 
