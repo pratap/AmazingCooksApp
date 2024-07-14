@@ -29,6 +29,5 @@ export const Default = {
     className: {},
     divClassName: {},
     inputClassName: {},
-    onchange: () => '',
   },
 };

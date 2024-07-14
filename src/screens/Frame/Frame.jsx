@@ -3,6 +3,11 @@ import { Button } from "../../components/Button";
 import { InputField } from "../../components/InputField";
 import "./style.css";
 import menuImage from "../../../static/img/menubutton.png"
+import backgroundImage from "../../../static/img/rectangle-1.png"
+import 'bootstrap/dist/css/bootstrap.css';
+import { Container, Row, Col, Card, Image } from "react-bootstrap"; 
+// Put any other imports below so that CSS from your
+// components takes precedence over default styles.
 
 const handleInputChange = (value) => {
   // Custom onChange logic
@@ -169,39 +174,44 @@ export const Frame = () => {
   return(
     <div className="frame">
       <div className="main-content-frame">
-        <div className="navigation-frame">
-          <div className="navigation-content">
-            <div className="navigation-child">
-              <div className="text-wrapper-2">Amazing Cooks</div>
-              <div className="navigation-buttons">
-                       <Button
-                        className="button-instance"
-                        divClassName="design-component-instance-node"
-                        label="Services"
-                        size="medium"
-                        variant="primary"
-                      />
-                      <Button
-                        className="button-instance"
-                        divClassName="design-component-instance-node"
-                        label="Cooks Near Me"
-                        size="medium"
-                        variant="primary"
-                      />
-                      <Button
-                        className="button-instance"
-                        divClassName="design-component-instance-node"
-                        label="Join Us"
-                        size="medium"
-                        variant="primary"
-                      />
-                    <div className="menu-button">
-                      <img className="img" alt="Button" src={menuImage} />
-                    </div>
+            <div className="navigation-frame">
+              <div className="navigation-content">
+                <div className="navigation-child">
+                 <div className="text-wrapper-2">Amazing Cooks</div>
+                  <div className="navigation-buttons">
+                  <Button
+                  className="button-instance"
+                  divClassName="design-component-instance-node"
+                  label="Services"
+                  size="medium"
+                  variant="primary"
+                />
+                <Button
+                  className="button-instance"
+                  divClassName="design-component-instance-node"
+                  label="Cooks Near Me"
+                  size="medium"
+                  variant="primary"
+                />
+                <Button
+                  className="button-instance"
+                  divClassName="design-component-instance-node"
+                  label="Join Us"
+                  size="medium"
+                  variant="primary"
+                />
+                <Button
+                  className="menu-button"
+                  divClassName="menu-button-instance"
+                  label=""
+                  size="medium"
+                  variant="primary"
+                />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="page-content-frame">
+             </div>
+             <div className="page-content-frame" >
             <div className="page-child-content">
               <div className="welcome-frame">   
                     <div className="text-wrapper-3">Welcome to Amazing Cooks</div>
@@ -239,9 +249,11 @@ export const Frame = () => {
                     </span>
                     </p>       
               </div>
-              <div className="overlap-group-wrapper">
+              <div className="create-account-frame">
+              {/* <div className="overlap-group-wrapper"> */}
                 <div className="overlap-group">
                   <div className="overlap">
+                    <div className="frame-2">
                     <div className="text-wrapper-7">Create Account</div>
                     <InputField
                       className="input-field-instance"
@@ -253,7 +265,7 @@ export const Frame = () => {
                       valueType="placeholder"
                       onChange={handleInputChange}
                     />
-                  </div>
+                  
                   <InputField
                     className="input-field-4"
                     divClassName="input-field-2"
@@ -264,7 +276,7 @@ export const Frame = () => {
                     valueType="placeholder"
                   />
                   <InputField
-                    className="input-field-5"
+                    className="input-field-4"
                     divClassName="input-field-2"
                     inputClassName="input-field-3"
                     label="Address"
@@ -273,7 +285,7 @@ export const Frame = () => {
                     valueType="placeholder"
                   />
                   <InputField
-                    className="input-field-6"
+                    className="input-field-4"
                     divClassName="input-field-2"
                     inputClassName="input-field-3"
                     label="Birthdate"
@@ -282,7 +294,7 @@ export const Frame = () => {
                     valueType="placeholder"
                   />
                   <InputField
-                    className="input-field-7"
+                    className="input-field-4"
                     divClassName="input-field-2"
                     inputClassName="input-field-3"
                     label="John Smith"
@@ -291,7 +303,7 @@ export const Frame = () => {
                     valueType="placeholder"
                   />
                   <InputField
-                    className="input-field-8"
+                    className="input-field-4"
                     divClassName="input-field-2"
                     inputClassName="input-field-3"
                     label="Family Name"
@@ -300,7 +312,7 @@ export const Frame = () => {
                     valueType="placeholder"
                   />
                   <InputField
-                    className="input-field-9"
+                    className="input-field-4"
                     divClassName="input-field-2"
                     inputClassName="input-field-3"
                     label="Email"
@@ -308,25 +320,47 @@ export const Frame = () => {
                     value="Jsmith@gmail.com"
                     valueType="placeholder"
                   />
+                  <div className="frame-3">
                   <InputField
-                    className="input-field-10"
+                    className="input-field-5"
                     divClassName="input-field-2"
-                    inputClassName="input-field-11"
+                    inputClassName="input-field-6"
                     label="Profile Pic"
                     state="default"
                     value="Enter the Ps"
                     valueType="placeholder"
                   />
-                  <Button className="sign-up-button" label="Sign Up" size="medium" variant="primary" />
                   <Button className="upload-photo-button" label="Upload photo" size="medium" variant="primary" />
-                  <Button className="sign-In-button" label="Sign In" size="medium" variant="primary" />
+                  </div>
+                  <div className="frame-3">
+                  <Button className="sign-up-button" label="Sign Up" size="medium" variant="primary" />    
+                  <div className="frame-5">
                   <div className="text-wrapper-8">Already have an account?</div>
-                </div>
-              </div>  
+                  <Button className="sign-In-button" label="Sign In" size="medium" variant="primary" />                            
+                    </div>
+                  </div>
+                </div> 
+               </div> 
+              </div>
             </div>
-          </div>
-        </div>
+         </div>
       </div>
+    </div>
     </div>
   );
 };
+
+// export const Frame = () => {
+//   return(
+//     <Container fluid className="frame">
+//       <Row className="justify-content-start" color="#fff0000">
+//         <Col xs={12} md={12} lg={12}>
+//           <div className="main-content-frame">
+//           </div>
+//         </Col>
+//       </Row>
+//     </Container>
+//   );
+// };
+
+
