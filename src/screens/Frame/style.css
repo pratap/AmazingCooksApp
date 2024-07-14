@@ -803,8 +803,6 @@
   align-items: stretch;
   /* width: 100vw;
   height: 100vh; */
-  /* display: grid;
-  grid-template-columns: repeat(2,1fr); */
 }
 
 .frame .main-content-frame {
@@ -822,15 +820,8 @@
   background-position:center;
   flex-direction: column;
   /* padding-bottom: 0%; */
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
 }
 
-@media (max-width: 768px) {
-  .frame .main-content-frame {
-    grid-template-columns: 1fr;
-  }
-}
 .frame .navigation-frame {
   align-items: flex-start;
   align-self: stretch;
@@ -1066,7 +1057,7 @@
   left: 16px;
   position: absolute;
   top: 5px;
-  width: 100vw;
+  width: 100%;
 }
 
 .frame .frame-2 {
