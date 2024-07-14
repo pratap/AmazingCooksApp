@@ -1048,16 +1048,16 @@
   right: 10%;
   position: relative;
   top: 32px;
-  width: 90%;
+  width: 100%;
   /* justify-content: space-around; */
 }
 
 .frame .overlap {
   height: 83px;
-  left: 76px;
+  left: 16px;
   position: absolute;
   top: 5px;
-  width: 90%;
+  width: 100vw;
 }
 
 .frame .frame-2 {
@@ -1077,7 +1077,7 @@
   align-items: flex-start;
   display: inline-flex;
   flex: 0 0 auto;
-  gap: 39px;
+  gap: 10px;
   position: relative;
 }
 
