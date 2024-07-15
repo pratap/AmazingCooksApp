@@ -1041,7 +1041,7 @@
 }
 
 .frame .overlap-group {
-  background-color: #0a000061;
+  /* background-color: #0a000061; */
   border-radius: 20px;
   height: 100vh;
   left: 1%;
@@ -1053,11 +1053,13 @@
 }
 
 .frame .overlap {
-  height: 83px;
-  left: 16px;
+  border-radius: 20px;
+  background-color: #0a000061; 
+  height: 80%;
+  left: 26px;
   position: absolute;
   top: 5px;
-  width: 100%;
+  width: 90%;
 }
 
 .frame .frame-2 {
@@ -1067,9 +1069,9 @@
   flex-direction: column;
   gap: 39px;
   justify-content: flex-end;
-  /* left: 123px; */
+   left: 26px; 
   position: absolute;
-  top: 6px;
+  top: 76px;
   width: 100%;
 }
 
@@ -1077,8 +1079,11 @@
   align-items: flex-start;
   display: inline-flex;
   flex: 0 0 auto;
-  gap: 10px;
+  gap: 40px;
   position: relative;
+  flex-wrap: wrap;
+  top: 20px;
+  width: 70%;
 }
 
 .frame .frame-4 {
@@ -1095,12 +1100,12 @@
   font-size: 25px;
   font-weight: 700;
   height: 43px;
-  left: 67px;
+  /* left: 67px; */
   letter-spacing: 0.1px;
   line-height: 20px;
   position: absolute;
   text-align: center;
-  top: 5px;
+  top: -35px;
   width: 100%;
 }
 
