@@ -15,6 +15,10 @@ export default {
   },
 };
 
+const handleClick = (e) => {
+  
+}
+
 export const Default = {
   args: {
     hasIconStart: false,

@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amazingcooks-staging-cfec8-authRole",
+      "UnauthRoleArn": "arn:aws:iam::471112862270:role/amplify-amazingcooks-staging-cfec8-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::471112862270:role/amplify-amazingcooks-staging-cfec8-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-amazingcooks-staging-cfec8-deployment",
+      "UnauthRoleName": "amplify-amazingcooks-staging-cfec8-unauthRole",
+      "StackName": "amplify-amazingcooks-staging-cfec8",
+      "StackId": "arn:aws:cloudformation:ap-south-1:471112862270:stack/amplify-amazingcooks-staging-cfec8/7c55f130-434b-11ef-8430-0aa200bd037b",
+      "AmplifyAppId": "d1s73fl830l554"
+    },
+    "categories": {
+      "auth": {
+        "amazingcooksfc2a2d94": {}
+      }
+    }
+  }
+}

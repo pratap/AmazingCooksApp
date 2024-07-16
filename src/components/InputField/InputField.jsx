@@ -27,17 +27,17 @@ export const InputField = ({
     setInputValue(newValue);
     
     // Example logic to change valueType dynamically
-    console.log(newValue);
+    // console.log(newValue);
     if (newValue === "") {
       setValueType("placeholder");
     } else {
       setValueType("default");
     }
 
-    // Call custom onChange prop, if provided
-    // if (onChange) {
-    //   onChange(newValue);
-    // }
+    //Call custom onChange prop, if provided
+    if (onChange) {
+      onChange(newValue);
+    }
   };
 
   const handleFocus = () => {

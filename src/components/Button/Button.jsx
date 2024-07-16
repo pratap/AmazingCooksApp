@@ -16,9 +16,10 @@ export const Button = ({
   size,
   className,
   divClassName,
+  onClick,
 }) => {
   return (
-    <button className={`button disabled-${disabled} ${variant} ${className}`}>
+    <button className={`button disabled-${disabled} ${variant} ${className}`} onClick={onClick}>
       <div className={`text-wrapper disabled-0-${disabled} variant-${variant} ${size} ${divClassName}`}>{label}</div>
     </button>
   );
@@ -31,4 +32,5 @@ Button.propTypes = {
   variant: PropTypes.oneOf(["primary", "neutral", "subtle"]),
   disabled: PropTypes.bool,
   size: PropTypes.oneOf(["medium", "small"]),
+  onClick: PropTypes.func,
 };
