@@ -69,6 +69,7 @@ export const Frame = () => {
     console.log(userId);
   } catch (error) {
     console.log('error signing up:', error);
+    alert(error.message);
   } 
 }
 
