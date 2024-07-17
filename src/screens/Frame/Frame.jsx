@@ -29,6 +29,7 @@ const signInButtonClicked = () => {
   console.log('sign In button clicked');
 }
 
+
 export const Frame = () => {
 
   const [name,setName] = useState('');
@@ -46,6 +47,7 @@ export const Frame = () => {
       phone_number: phoneNumber,
       gender: gender
     });
+    
  };
 
  async function handleSignUp({ name, password, email, phone_number, gender }) {
@@ -68,7 +70,8 @@ export const Frame = () => {
 
     console.log(userId);
   } catch (error) {
-    console.log('error signing up:', error);
+    console.log('error signing up:', error.message);
+    alert(error.message);
   } 
 }
 
