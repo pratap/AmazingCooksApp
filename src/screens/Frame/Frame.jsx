@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React,
+ { useState } from "react";
 import { Button } from "../../components/Button";
 import { InputField } from "../../components/InputField";
 import "./style.css";
@@ -6,12 +7,11 @@ import menuImage from "../../../static/img/menubutton.png"
 import backgroundImage from "../../../static/img/rectangle-1.png"
 import 'bootstrap/dist/css/bootstrap.css';
 import { Container, Row, Col, Card, Image, Alert } from "react-bootstrap"; 
-import { signUp } from "aws-amplify/auth"
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { Amplify } from "aws-amplify";
-import { Authenticator } from '@aws-amplify/ui-react';
+import { signUp, confirmSignUp, signIn, signOut, getCurrentUser } from "aws-amplify/auth"
+import {  } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 
  import  awsmobile  from "../../aws-exports";
@@ -24,18 +24,46 @@ import '@aws-amplify/ui-react/styles.css';
 // components takes precedence over default styles.
  
 
-
-const signInButtonClicked = () => {
-  console.log('sign In button clicked');
-}
-
 export const Frame = () => {
+
+  const [isOTPScreen, setIsOTPScreen] = useState(false);
+  const [isSignUpComplete, setIsSignUpComplete] = useState(false);
+  const [isLoginScreen, setIsLoginScreen] = useState(false);
+  const [isSignedUpScreen, setIsSignedUpScreen] = useState(true);
+  const [isAutoSignInSuccess, setIsAutoSignInSuccess] = useState(false);
+  const [user, setUser] = useState(null); 
 
   const [name,setName] = useState('');
   const [password,setPassword] = useState('');
   const [emailId,setEmailId] = useState('');
   const [phoneNumber,setPhoneNumber] = useState('');
   const [gender,setGender] = useState('');
+  const [emailVerificationCode,setEmailVerificationCode] = useState('');
+
+  
+  // var isLoginScreen = false;
+  // var isSignedUpScreen = true;
+
+  const signInButtonClicked = () => {
+    console.log('sign In button clicked');
+    
+  }
+  
+  const showLoginScreen = (e) => {
+    console.log('show login screen');
+    const value = e;
+    setIsLoginScreen(value);
+    setIsSignedUpScreen(!value);
+    //  window.location.reload();
+  }
+  
+  const showSignUpScreen = (e) => {
+    console.log('show signup screen');
+    const value = e;
+    setIsSignedUpScreen(value);
+    setIsLoginScreen(!value);
+    //  window.location.reload();
+  }
 
   const signUpButtonClicked = () => {
     console.log(name, password, emailId, phoneNumber, gender);
@@ -47,6 +75,92 @@ export const Frame = () => {
       gender: gender
     });
  };
+
+ const confirmButtonClicked = () => {
+  console.log(emailId, emailVerificationCode);
+    handlEmailVerificationClicked(
+      {
+        email: emailId,
+        code: emailVerificationCode
+      }
+    );
+ };
+
+ async function handlEmailVerificationClicked({email, code}) {
+  console.log(email, code);
+    try {
+
+      const { isSignUpComplete, nextStep } = await confirmSignUp({
+        username: email,
+        confirmationCode: emailVerificationCode
+      });
+
+      signInUser()
+    }
+    catch (error) {
+      alert(error.message);
+    } 
+   
+ };
+
+ 
+ const signInUser = () => {
+    
+    handleSignInUser({
+      username: name,
+      password: password
+    })
+ }
+
+ const signOutUser = () => {
+    handleSignOutUser({})
+ }
+
+ async function handleSignOutUser() {
+  try {
+     await signOut();
+    console.log('Successfully signed out');
+    setIsAutoSignInSuccess(false);
+    showLoginScreen(true);
+    setUser('');
+    setPassword('');
+    
+  } catch (error) {
+    console.log('error signing out: ', error);
+  }
+  
+ }
+
+ async function handleSignInUser(username, password) {
+  
+    try {
+      // Auto sign-in after confirmation
+      
+     
+      if (isAutoSignInSuccess) {
+        const { signInDetails } = await getCurrentUser();
+        console.log("sign-in details", signInDetails.loginId);
+        setUser( signInDetails.loginId);
+      }
+      else {
+        const { isSignedIn } = await signIn(username, password); // Replace 'password' with user's password
+        setIsAutoSignInSuccess(true);
+      }
+    
+      
+    } catch (error) {
+      console.log(error);
+      alert(error.message);
+      if (error.name === 'UserAlreadyAuthenticatedException') {
+        setIsAutoSignInSuccess(true);
+        const { signInDetails } = await getCurrentUser();
+        console.log("sign-in details", signInDetails.loginId);
+        setUser( signInDetails.loginId);
+      }
+      
+    }
+  
+ }
 
  async function handleSignUp({ name, password, email, phone_number, gender }) {
   console.log(name, password, email, phone_number, gender);
@@ -66,16 +180,20 @@ export const Frame = () => {
       }
     });
 
-    console.log(userId);
+    setIsOTPScreen(true);
+    setIsSignUpComplete(true);
+    setIsSignedUpScreen(false);
+    
   } catch (error) {
     console.log('error signing up:', error);
     alert(error.message);
   } 
 }
 
+
   return (
     <div className="frame">
-      <div className="main-content-frame">
+     { !isAutoSignInSuccess &&  <div className="main-content-frame">
         <div className="navigation-frame">
           <div className="navigation-content">
             <div className="navigation-child">
@@ -150,11 +268,11 @@ export const Frame = () => {
                   <br />
                 </span>
               </p>
-            </div>
+           </div>
             <div className="create-account-frame">
               <div className="overlap-group">
               <div className="overlap">
-              <div className="frame-2">
+              { isSignedUpScreen && !isSignUpComplete && <div className="frame-2">
                     <div className="text-wrapper-7">Create Account</div>
                     <InputField
                       className="input-field-instance"
@@ -211,16 +329,63 @@ export const Frame = () => {
                       <Button className="sign-up-button" label="Sign Up" size="medium" variant="primary" onClick={signUpButtonClicked}/>
                       <div className="frame-5">
                         <div className="text-wrapper-8">Already have an account?</div>
-                        <Button className="sign-In-button" label="Sign In" size="medium" variant="primary" onClick={signInButtonClicked} />
+                        <Button className="sign-In-button" label="Sign In" size="medium" variant="primary" onClick={showLoginScreen} />
                       </div>
                     </div>
-                  </div>
+                  </div>}
+                  {isOTPScreen && isSignUpComplete  && <div className="frame-2">
+                    <div className="text-wrapper-7">Verify Email</div>
+                    <InputField
+                      className="input-field-instance"
+                      divClassName="input-field-2"
+                      inputClassName="input-field-3"
+                      label="Confirmation Code"
+                      state="default"
+                      value="Enter your code"
+                      valueType="placeholder"
+                      onChange={e => setEmailVerificationCode(e)}
+                    />
+                    <div className="frame-3">
+                      <Button className="sign-up-button" label="Confirm" size="medium" variant="primary" onClick={confirmButtonClicked}/>
+                      <Button className="sign-up-button" label="Resend Code" size="medium" variant="primary" onClick={signUpButtonClicked}/>
+                    </div>
+                  </div>}
+                  { isLoginScreen  && <div className="frame-2">
+                    <div className="text-wrapper-7">Sign In</div>
+                    <InputField
+                      className="input-field-instance"
+                      divClassName="input-field-2"
+                      inputClassName="input-field-3"
+                      label="User Name"
+                      state="default"
+                      value="Enter your Email id"
+                      valueType="placeholder"
+                      onChange={e => setName(e)}
+                    />
+                     <InputField
+                      className="input-field-4"
+                      divClassName="input-field-2"
+                      inputClassName="input-field-3"
+                      label="Password"
+                      state="default"
+                      value="Enter the password"
+                      valueType="placeholder"
+                      onChange={e => setPassword(e)}
+                    />
+                    <div className="frame-3">
+                      <Button className="sign-up-button" label="Login" size="medium" variant="primary" onClick={e => signInUser()}/>  
+                      <Button className="sign-up-button" label="Sign Up" size="medium" variant="primary" onClick={e => showSignUpScreen(true)}/>                     
+                    </div>
+                  </div>}
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+     }
+     Welcome {user} <Button className="sign-up-button" label="Signout" size="medium" variant="primary" onClick={e => signOutUser()}/>
     </div>
     // <Authenticator>
     //   {({ signOut, user }) => (
