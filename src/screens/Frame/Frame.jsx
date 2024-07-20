@@ -31,7 +31,8 @@ export const Frame = () => {
   const [isLoginScreen, setIsLoginScreen] = useState(false);
   const [isSignedUpScreen, setIsSignedUpScreen] = useState(true);
   const [isAutoSignInSuccess, setIsAutoSignInSuccess] = useState(false);
-  const [user, setUser] = useState(null); 
+  //const [user, setUser] = useState(null); 
+ 
 
   const [name,setName] = useState('');
   const [password,setPassword] = useState('');
@@ -40,13 +41,46 @@ export const Frame = () => {
   const [gender,setGender] = useState('');
   const [emailVerificationCode,setEmailVerificationCode] = useState('');
 
+  useEffect(() => {
+    const data = localStorage.getItem('user');
+    if (data) {
+      console.log('User details in useEffect : ', data);
+      localStorage.setItem('user', data);
+      setIsAutoSignInSuccess(true);
+    }
+  }, []);
+
   
   // var isLoginScreen = false;
   // var isSignedUpScreen = true;
 
-  const signInButtonClicked = () => {
-    console.log('sign In button clicked');
+  function isUserAleardyLoggedIn() {
+    const user = localStorage.getItem('user');
+    console.log('user: ', user === '');
+    if (user === '') {
+      return user;
+    }
+    else {
+    const userParsed = JSON.parse(user)
+    console.log('User details in side isUserAleardyLoggedIn : ', userParsed);
+    return userParsed;
+    }
     
+  }
+
+  const signInButtonClicked = () => {
+    // let user = isUserAleardyLoggedIn()
+    // console.log('user: ', user);
+    // if (user === '') {
+    //   console.log('user not yet logged In');
+    //   showLoginScreen(true);
+    // }
+    // else {
+    //   console.log('user already logged In');
+    //   setIsAutoSignInSuccess(true);
+    //   showLoginScreen(true);
+    // }
+    showLoginScreen(true);
   }
   
   const showLoginScreen = (e) => {
@@ -58,11 +92,19 @@ export const Frame = () => {
   }
   
   const showSignUpScreen = (e) => {
-    console.log('show signup screen');
-    const value = e;
-    setIsSignedUpScreen(value);
-    setIsLoginScreen(!value);
-    //  window.location.reload();
+    let user = isUserAleardyLoggedIn()
+    console.log('user: ', user);
+    if (user === '') {
+      console.log('show signup screen');
+      const value = e;
+      setIsSignedUpScreen(value);
+      setIsLoginScreen(!value);
+    }
+    else {
+      setIsAutoSignInSuccess(true);
+      showLoginScreen(true);
+    }
+   
   }
 
   const signUpButtonClicked = () => {
@@ -122,7 +164,7 @@ export const Frame = () => {
     console.log('Successfully signed out');
     setIsAutoSignInSuccess(false);
     showLoginScreen(true);
-    setUser('');
+    localStorage.setItem('user', '');
     setPassword('');
     
   } catch (error) {
@@ -135,18 +177,13 @@ export const Frame = () => {
   
     try {
       // Auto sign-in after confirmation
-      
-     
-      if (isAutoSignInSuccess) {
+      const {} = await signIn(username, password); // Replace 'password' with user's password
+        console.log('logged in succesful');
         const { signInDetails } = await getCurrentUser();
-        console.log("sign-in details", signInDetails.loginId);
-        setUser( signInDetails.loginId);
-      }
-      else {
-        const { isSignedIn } = await signIn(username, password); // Replace 'password' with user's password
+        const signInDetailsString = JSON.stringify(signInDetails.loginId)
+        localStorage.setItem('user', signInDetailsString);
+        console.log('user : ', localStorage.getItem('user'));
         setIsAutoSignInSuccess(true);
-      }
-    
       
     } catch (error) {
       console.log(error);
@@ -154,8 +191,10 @@ export const Frame = () => {
       if (error.name === 'UserAlreadyAuthenticatedException') {
         setIsAutoSignInSuccess(true);
         const { signInDetails } = await getCurrentUser();
-        console.log("sign-in details", signInDetails.loginId);
-        setUser( signInDetails.loginId);
+        const signInDetailsString = JSON.stringify(signInDetails.loginId)
+        localStorage.setItem('user', signInDetailsString);
+        console.log("sign-in details", signInDetailsString);
+       // setUser( signInDetails.loginId);
       }
       
     }
@@ -329,7 +368,7 @@ export const Frame = () => {
                       <Button className="sign-up-button" label="Sign Up" size="medium" variant="primary" onClick={signUpButtonClicked}/>
                       <div className="frame-5">
                         <div className="text-wrapper-8">Already have an account?</div>
-                        <Button className="sign-In-button" label="Sign In" size="medium" variant="primary" onClick={showLoginScreen} />
+                        <Button className="sign-In-button" label="Sign In" size="medium" variant="primary" onClick={signInButtonClicked} />
                       </div>
                     </div>
                   </div>}
@@ -385,7 +424,9 @@ export const Frame = () => {
       </div>
 
      }
-     Welcome {user} <Button className="sign-up-button" label="Signout" size="medium" variant="primary" onClick={e => signOutUser()}/>
+    { isAutoSignInSuccess && <div className="">
+      Welcome {localStorage.getItem('user')} <Button className="sign-up-button" label="Signout" size="medium" variant="primary" onClick={e => signOutUser()}/>
+     </div>} 
     </div>
     // <Authenticator>
     //   {({ signOut, user }) => (
